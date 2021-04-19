@@ -1,1 +1,22 @@
-{}
+{
+  "name": "orinoco",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./scss/style.scss:./css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YvanGhomman/GhommanYvan_5_09012021.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YvanGhomman/GhommanYvan_5_09012021/issues"
+  },
+  "homepage": "https://github.com/YvanGhomman/GhommanYvan_5_09012021#readme",
+  "description": "",
+  "dependencies": {
+    "bootstrap": "^4.6.0"
+  }
+}
