@@ -33,7 +33,7 @@ async function getData(endpoint) {
 };
 
 function template(product) {
-    return `<div class="card" style="width: 18rem;">
+    return `<div class="card">
                      <img src="${product.imageUrl}" class="card-img-top" alt="${product.name}">
                      <div class="card-body">
                      <h5 class="card-title">${product.name}</h5>
