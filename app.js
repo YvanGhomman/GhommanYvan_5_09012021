@@ -18,19 +18,19 @@ function template(product) {
                      <div class="card-body">
                         <h5 class="card-title">${product.name}</h5>
                         <p class="card-text">${product.description}</p>
-                        <p class="card-text">${product.price} Dogecoins</p>
-                        <a href="#" class="btn btn-primary">Kilébo ! Jeleveu ♥</a>
-                     </div>
-            </div>`;
+                        <p class="card-text">${product.price} Dogecoins</p>`                 
 };
 
 //Application de getData avec chacun des produits + mise en place du Template dans l'Id-Html correspondant
 getData('http://localhost:3000/api/furniture/5be9cc611c9d440000c1421e')
 .then(data => {
     function displayProduct(data) {
-        document.getElementById("Produit1").innerHTML += template(data);
+        document.getElementById("Produit1").innerHTML += template(data) + `<a href="produit1.html" class="btn btn-primary">Kilébo ! Jeleveu ♥</a>
+        </div>
+        </div>`;
     }
         displayProduct(data);
+        
         })
 .catch(error => console.error(error));
 
@@ -38,7 +38,9 @@ getData('http://localhost:3000/api/furniture/5be9cc611c9d440000c1421e')
 getData('http://localhost:3000/api/furniture/5beaadda1c9d440000a57d98')
 .then(data => {
     function displayProduct(data) {
-        document.getElementById("Produit2").innerHTML += template(data);
+        document.getElementById("Produit2").innerHTML += template(data) + `<a href="produit2.html" class="btn btn-primary">Kilébo ! Jeleveu ♥</a>
+        </div>
+        </div>`;
     }
         displayProduct(data);
         })
@@ -48,7 +50,9 @@ getData('http://localhost:3000/api/furniture/5beaadda1c9d440000a57d98')
 getData('http://localhost:3000/api/furniture/5beaae361c9d440000a57d99')
 .then(data => {
     function displayProduct(data) {
-        document.getElementById("Produit3").innerHTML += template(data);
+        document.getElementById("Produit3").innerHTML += template(data) + `<a href="produit3.html" class="btn btn-primary">Kilébo ! Jeleveu ♥</a>
+        </div>
+        </div>`;
     }
         displayProduct(data);
         })
@@ -58,7 +62,9 @@ getData('http://localhost:3000/api/furniture/5beaae361c9d440000a57d99')
 getData('http://localhost:3000/api/furniture/5beaaf2e1c9d440000a57d9a')
 .then(data => {
     function displayProduct(data) {
-        document.getElementById("Produit4").innerHTML += template(data);
+        document.getElementById("Produit4").innerHTML += template(data) + `<a href="produit4.html" class="btn btn-primary">Kilébo ! Jeleveu ♥</a>
+        </div>
+        </div>`;
     }
         displayProduct(data);
         })
@@ -68,7 +74,9 @@ getData('http://localhost:3000/api/furniture/5beaaf2e1c9d440000a57d9a')
 getData('http://localhost:3000/api/furniture/5beab2061c9d440000a57d9b')
 .then(data => {
     function displayProduct(data) {
-        document.getElementById("Produit5").innerHTML += template(data);
+        document.getElementById("Produit5").innerHTML += template(data) + `<a href="produit5.html" class="btn btn-primary">Kilébo ! Jeleveu ♥</a>
+        </div>
+        </div>`;
     }
         displayProduct(data);
         })
