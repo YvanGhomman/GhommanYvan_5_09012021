@@ -5,12 +5,13 @@ PS C:\Users\yvang\Desktop\OpenClassrooms\P5\Orinoco\back-end> node .\server.js *
 
 const ALL_DATA_ENDPOINT = 'http://localhost:3000/api/furniture';
 
-// Get Function
+// Get Function with Fetch
 async function getData(endpoint) {
     let response = await fetch(endpoint);
     return await response.json();
 };
 
+//Template pour produits
 function template(product) {
     return `<div class="card">
                      <img src="${product.imageUrl}" class="card-img-top" alt="${product.name}">
@@ -23,7 +24,7 @@ function template(product) {
             </div>`;
 };
 
-
+//Application de getData avec chacun des produits + mise en place du Template dans l'Id-Html correspondant
 getData('http://localhost:3000/api/furniture/5be9cc611c9d440000c1421e')
 .then(data => {
     function displayProduct(data) {

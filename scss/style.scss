@@ -9,3 +9,16 @@
 .white{
     color: white;
 }
+body{
+    background-color : #F3E9F1
+}
+
+
+.center{
+    justify-content: center;
+    &2{
+        display: flex;
+        margin: 0 auto 10px auto;
+        padding: 0;
+    }
+}

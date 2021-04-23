@@ -157,7 +157,7 @@ a {
   background-color: transparent;
 }
 a:hover {
-  color: #9e9e9e;
+  color: #0056b3;
   text-decoration: underline;
 }
 
@@ -9935,6 +9935,19 @@ h3 {
 
 .white {
   color: white;
+}
+
+body {
+  background-color: #F3E9F1;
+}
+
+.center {
+  justify-content: center;
+}
+.center2 {
+  display: flex;
+  margin: 0 auto 10px auto;
+  padding: 0;
 }
 
 /*# sourceMappingURL=style.css.map */
