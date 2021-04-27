@@ -589,9 +589,8 @@ pre code {
 .col-auto, .col-12, .col-11, .col-10, .col-9, .col-8, .col-7, .col-6, .col-5, .col-4, .col-3, .col-2, .col-1 {
   position: relative;
   width: 100%;
-  padding-right: 0px;
-  padding-left: 0px;
-  margin: 0px 5px;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 .col {
@@ -9936,6 +9935,24 @@ h3 {
 
 .white {
   color: white;
+  font-size: 20px;
+  text-decoration: none;
+}
+.white:hover {
+  background: -webkit-linear-gradient(left, #E68A08 20%, #8F5BFE 80%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.gradient:hover {
+  background: -webkit-linear-gradient(left, #E68A08 20%, #8F5BFE 80%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 body {
@@ -9946,8 +9963,23 @@ main {
   margin-bottom: 20px;
 }
 
+.contrecol {
+  padding: 0px !important;
+}
+
+.card {
+  margin: 30px 5px;
+}
+
+.marginfooter {
+  margin-bottom: 0px;
+}
+
 .space {
   margin-bottom: 20px;
+}
+.space-between {
+  justify-content: space-between;
 }
 
 .center {

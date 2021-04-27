@@ -1,4 +1,6 @@
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+$color-primary : #E68A08;
+$color-secondary : #8F5BFE;
 
 
 #Titre {
@@ -8,16 +10,46 @@
 
 .white{
     color: white;
+    font-size: 20px;
+    text-decoration: none;
+    &:hover{
+        background:-webkit-linear-gradient(left,$color-primary 20%, $color-secondary 80%);
+        background-clip:text;
+        -webkit-background-clip:text;
+        color:transparent;
+        font-size: 20px;
+        font-weight:bold ;
+        text-decoration: none;
+    }
 }
+.gradient:hover{
+    background:-webkit-linear-gradient(left,$color-primary 20%, $color-secondary 80%);
+    background-clip:text;
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
 body{
     background-color : #F3E9F1
 }
 main{
     margin-bottom: 20px ;
 }
+.contrecol{
+    padding: 0px !important;
+}
+.card{
+    margin: 30px 5px;
+}
+.marginfooter{
+margin-bottom: 0px;
+}
 
 .space{
     margin-bottom: 20px ;
+    &-between{
+        justify-content: space-between;
+    }
 }
 .center{
     justify-content: center;

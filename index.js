@@ -1,10 +1,9 @@
 //Mise en place des constantes
 const urlFurnitures = 'http://localhost:3000/api/furniture';
-//let furnituresArray = "[]";
 const furnituresContainer = document.getElementById("furnitures-container");
 
-// Get Function with Fetch
 
+// Get Function with Fetch
 fetch(urlFurnitures)
     .then((response) =>
         response.json()
@@ -12,7 +11,7 @@ fetch(urlFurnitures)
         console.log(data);
         let furnitureElement = '';
         for (let furniture of data){
-            furnitureElement += `<div class="card col-12 col-sm-5 col-lg-3 col-xl-2 space test">
+            furnitureElement += `<div class="card contrecol col-12 col-sm-5 col-lg-3 space">
                 <img src="${furniture.imageUrl}" class="card-img-top" alt="${furniture.name}">
                 <div class="card-body">
                 <h5 class="card-title">${furniture.name}</h5>
@@ -26,4 +25,3 @@ fetch(urlFurnitures)
         })
     )
     .catch((err) => console.log('Erreur : ' + err));
-    
