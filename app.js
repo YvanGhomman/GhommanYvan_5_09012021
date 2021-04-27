@@ -18,7 +18,7 @@ function template(product) {
                      <div class="card-body">
                         <h5 class="card-title">${product.name}</h5>
                         <p class="card-text">${product.description}</p>
-                        <p class="card-text">${product.price} Dogecoins</p>`                 
+                        <p class="card-text">${product.price/100} Dogecoins</p>`                 
 };
 
 //Application de getData avec chacun des produits + mise en place du Template dans l'Id-Html correspondant
