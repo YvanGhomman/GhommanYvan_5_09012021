@@ -10,12 +10,13 @@ console.log(btn);
 
 
 // fonction pour la quantité
+//utiliser input type nbr a place select
 function compteur() {
     let Quantite = document.getElementById("quantite");
     for (let nbr = 1; nbr <= 5; nbr++) {
-       let newQuantite = document.createElement("option");
+       let newQuantite = '';
        newQuantite.innerText += nbr;
-       Quantite.append(newQuantite);
+       Quantite += newQuantite;
      }
   };
 
@@ -42,17 +43,17 @@ fetch(urlApiId)
                 <div class="card-body">
                     <h5 class="card-title">${data.name}</h5>
                     <p class="card-text">${data.description}</p>
-                    <p class="card-text">${data.price/100} Dogecoins</p>
+                    <p class="card-text">${data.price/10} Dogecoins</p>
                 </div>
                 <div class="card-footer text-muted">
                     <form class="offset-1 col-10 offset-1 ">
                         <div class="form-group">
-                            <label for="quantité">Choisissez une quantité (<em> Dans la limite de 5 meubles </em>)</label>
-                            <select class="form-control" id="quantite" name="quantité"></select>
+                            <label for="quantité">Choisissez une quantité</label>
+                            <input type="number" class="form-control" id="quantite" name="quantité" min="1" max="100" required></input>
                         </div>
                         <div class="form-group">
                             <label>Choisissez un vernis</label>
-                            <select class="form-control" id="choix-vernis"></select>
+                            <select class="form-control" id="choix-vernis" required></select>
                         </div>
                     </form>
                 </div>`;
