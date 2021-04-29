@@ -26,7 +26,7 @@
 }
 
 body {
-  background-color: #F3E9F1 ;
+  background-color: #F3E9F1;
 }
 
 main {
@@ -60,5 +60,46 @@ main {
   margin: 0 auto 10px auto;
   padding: 0;
 }
+
+.ulDisposition {
+  display: flex;
+  list-style: none;
+  margin: 20px 0px;
+  border: 2px solid #6C757D;
+  background: #00000008;
+  border-radius: 5px;
+}
+
+.ulDisposition .liDisp {
+  margin-right: 40px;
+  padding-left: 10px;
+}
+
+.liDisp ul {
+  list-style: none;
+  margin: 10px 5px;
+  padding: 0;
+  text-align: center;
+}
+
+/*
+.pagePanier{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.articlePanier{
+    display: flex;
+    flex-direction: column;
+}
+.titrePanier{
+    display: flex;
+    justify-content: space-between;
+}
+.prixPanier{
+    text-align: center;
+}
+*/
 
 /*# sourceMappingURL=style.css.map */

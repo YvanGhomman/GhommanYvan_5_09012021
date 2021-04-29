@@ -5,7 +5,7 @@ const urlApiId = urlFurnitures + searchParam;
 const furnitureContainer = document.getElementById("ProduitFurniture");
 console.log(urlApiId);
 
-let btn = document.querySelector(".add-to-cart");
+let btn = document.querySelector(".cart");
 console.log(btn);
 
 
@@ -60,8 +60,35 @@ fetch(urlApiId)
         furnitureContainer.innerHTML += furnitureElement;
         compteur();
         choixVernis(data);
+        btn.addEventListener("click",()=>{
+            let furnitureChoice = {
+                furnitureName : data.name,
+                furnitureId   : data._id,
+                furnitureImage: data.imageUrl,
+                furniturePrice: data.price/100,
+                furnitureVarnish: document.getElementById("choix-vernis").value,
+                furnitureQuantite : parseInt(document.getElementById("quantite").value),
+                get totalPrice (){
+                    return this.furniturePrice * this.furnitureQuantite;
+                }
+            };
+            // Détection
+            if (typeof localStorage != "undefined"){
+            // on recupère la valeur dans le Web Storage
+                let furnitureStore = JSON.parse(localStorage.getItem("furnitureInCart"));
+                if (furnitureStore === null || furnitureStore === "undefined"){
+                    furnitureStore = []; // on crée le tableau 
+                } else {
+                    furnitureStore.push(furnitureChoice); // si le tableau existe on push le choix du meuble
+                }
+                localStorage.setItem("furnitureInCart", JSON.stringify(furnitureStore));
+              //  openModal(`${data.name} a bien été ajouté au panier. Voulez-vous continuer vos achats ?`);
+                alert(`Vous avez ajouté ${furnitureChoice.furnitureQuantite} ${data.name} à votre panier. Merci beaucoup !`);
 
-        })
-    )
-    .catch((err) => console.log('Erreur : ' + err));
+            } else {
+                alert("Nos excuses, une erreur est survenue :/");
+            }    
+        });
+    })
+    .catch((err) => console.log('Erreur : ' + err)));
 
