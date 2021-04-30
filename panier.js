@@ -35,7 +35,7 @@ const displayFurniture = () => {
     displayStore.append(...furnitureStoreMap);
 };
 
-// fonction pour creer l'element  furni 
+// fonction pour creer l'element furni 
 const createFurnitureElement = (furni , index) =>{
     const ul = document.createElement('ul');
     ul.setAttribute("class","ulDisposition");

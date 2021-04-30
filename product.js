@@ -9,7 +9,7 @@ let btn = document.querySelector(".cart");
 console.log(btn);
 
 
-// fonction pour la quantité
+//fonction pour la quantité
 //utiliser input type nbr a place select
 function compteur() {
     let Quantite = document.getElementById("quantite");
@@ -20,7 +20,7 @@ function compteur() {
      }
   };
 
-// fonction pour afficher les options de vernis.
+// fonction pour afficher les options de vernis
 function choixVernis(data) {
     let choixVernis = document.getElementById("choix-vernis")
     for (let i = 0; i < data.varnish.length; i++) {
@@ -28,7 +28,7 @@ function choixVernis(data) {
       newChoixVernis.innerText = data.varnish[i];
       choixVernis.append(newChoixVernis);
     }
-  };
+};
 
 
 // Get Function with Fetch
