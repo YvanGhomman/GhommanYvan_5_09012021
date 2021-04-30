@@ -12,12 +12,16 @@ console.log(btn);
 //fonction pour la quantité
 //utiliser input type nbr a place select
 function compteur() {
-    let Quantite = document.getElementById("quantite");
-    for (let nbr = 1; nbr <= 5; nbr++) {
-       let newQuantite = '';
-       newQuantite.innerText += nbr;
-       Quantite += newQuantite;
-     }
+    let qte = document.getElementById("quantite");
+    let newQuantite = '';
+    let nbr = 0;
+    qte.addEventListener("change",()=>{
+    if (nbr < 0 || nbr > 100 || nbr === NaN || nbr === "NaN" || nbr === "undifined" || nbr === null){
+        alert("arrête ça de suite !")
+    }else{
+    newQuantite.innerText += nbr;
+    qte += newQuantite;
+    }})
   };
 
 // fonction pour afficher les options de vernis
@@ -43,7 +47,7 @@ fetch(urlApiId)
                 <div class="card-body">
                     <h5 class="card-title">${data.name}</h5>
                     <p class="card-text">${data.description}</p>
-                    <p class="card-text">${data.price/10} Dogecoins</p>
+                    <p class="card-text">${data.price/100} Dogecoins</p>
                 </div>
                 <div class="card-footer text-muted">
                     <form class="offset-1 col-10 offset-1 ">
@@ -70,7 +74,7 @@ fetch(urlApiId)
                 furnitureQuantite : parseInt(document.getElementById("quantite").value),
                 get totalPrice (){
                     return this.furniturePrice * this.furnitureQuantite;
-                }
+                }   
             };
             // Détection
             if (typeof localStorage != "undefined"){
@@ -86,7 +90,7 @@ fetch(urlApiId)
                 alert(`Vous avez ajouté ${furnitureChoice.furnitureQuantite} ${data.name} à votre panier. Merci beaucoup !`);
 
             } else {
-                alert("Nos excuses, une erreur est survenue :/");
+                alert("Nos excuses, une erreur est survenue :(");
             }    
         });
     })

@@ -16,8 +16,6 @@ $color-secondary : #8F5BFE;
         background-clip:text;
         -webkit-background-clip:text;
         color:transparent;
-        font-size: 20px;
-        font-weight:bold ;
         text-decoration: none;
     }
 }
@@ -66,18 +64,19 @@ margin-bottom: 0px;
     border: 2px solid #6C757D;
     background: #00000008;
     border-radius: 5px;
+    & .liDisp{
+        margin-right: 40px;
+        padding-left: 10px;
+        & ul{
+            list-style: none;
+            margin: 10px 5px;
+            padding: 0;
+            text-align: center;
+        }
+    }
 }
-.ulDisposition .liDisp{
-    margin-right: 40px;
-    padding-left: 10px;
-    
-}
-.liDisp ul{
-    list-style: none;
-    margin: 10px 5px;
-    padding: 0;
-    text-align: center;
-}
+
+
 /*
 .pagePanier{
     display: flex;

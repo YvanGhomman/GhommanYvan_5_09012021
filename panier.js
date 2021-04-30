@@ -115,7 +115,8 @@ const compteurPanierPrixTotal = () =>{
     prixTotalCommande.innerHTML= `PRIX TOTAL: ${prixTotal}€`;
     localStorage.setItem("TotalPrice", prixTotal);
     console.log(localStorage);  
-}}
+}};
+
 
 compteurPanierPrixTotal();
 displayFurniture();
