@@ -11,18 +11,24 @@ console.log(btn);
 
 //fonction pour la quantité
 //utiliser input type nbr a place select
+
+// PROBLEME DETECTION NEGATIF OU NAN    
+
 function compteur() {
-    let qte = document.getElementById("quantite");
-    let newQuantite = '';
-    let nbr = 0;
-    qte.addEventListener("change",()=>{
-    if (nbr < 0 || nbr > 100 || nbr === NaN || nbr === "NaN" || nbr === "undifined" || nbr === null){
-        alert("arrête ça de suite !")
-    }else{
-    newQuantite.innerText += nbr;
-    qte += newQuantite;
-    }})
-  };
+    let qt = document.querySelector('input[name="quantité"]');
+    let nbr = qt.value;
+    function doThing(){
+        if (nbr < 0 || nbr > 100 || nbr === NaN || nbr === "NaN" || nbr === "undefined" || nbr === null){
+            alert("arrête ça de suite !")
+        }else{
+            let newQuantite = '';
+            newQuantite.innerText += nbr;
+            qt += newQuantite;
+        }
+    };        
+    qt.addEventListener("change", doThing);
+    console.log(qt);
+};
 
 // fonction pour afficher les options de vernis
 function choixVernis(data) {
@@ -53,7 +59,7 @@ fetch(urlApiId)
                     <form class="offset-1 col-10 offset-1 ">
                         <div class="form-group">
                             <label for="quantité">Choisissez une quantité</label>
-                            <input type="number" class="form-control" id="quantite" name="quantité" min="1" max="100" required></input>
+                            <input type="number" class="form-control" id="quantite" name="quantité" min="1" max="100" value ="1" required></input>
                         </div>
                         <div class="form-group">
                             <label>Choisissez un vernis</label>
@@ -86,13 +92,11 @@ fetch(urlApiId)
                     furnitureStore.push(furnitureChoice); // si le tableau existe on push le choix du meuble
                 }
                 localStorage.setItem("furnitureInCart", JSON.stringify(furnitureStore));
-              //  openModal(`${data.name} a bien été ajouté au panier. Voulez-vous continuer vos achats ?`);
                 if (window.confirm(`Vous avez ajouté ${furnitureChoice.furnitureQuantite} ${data.name} à votre panier ! Souhaitez-vous continuer vos achats ? `)) {
                     window.location.href = "index.html";
                 } else {
                     window.location.href = "panier.html";
                 };
-               // alert(`Vous avez ajouté ${furnitureChoice.furnitureQuantite} ${data.name} à votre panier. Merci beaucoup !`);
 
             } else {
                 alert("Nos excuses, une erreur est survenue :(");
