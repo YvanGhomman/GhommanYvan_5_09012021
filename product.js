@@ -87,7 +87,12 @@ fetch(urlApiId)
                 }
                 localStorage.setItem("furnitureInCart", JSON.stringify(furnitureStore));
               //  openModal(`${data.name} a bien été ajouté au panier. Voulez-vous continuer vos achats ?`);
-                alert(`Vous avez ajouté ${furnitureChoice.furnitureQuantite} ${data.name} à votre panier. Merci beaucoup !`);
+                if (window.confirm(`Vous avez ajouté ${furnitureChoice.furnitureQuantite} ${data.name} à votre panier ! Souhaitez-vous continuer vos achats ? `)) {
+                    window.location.href = "index.html";
+                } else {
+                    window.location.href = "panier.html";
+                };
+               // alert(`Vous avez ajouté ${furnitureChoice.furnitureQuantite} ${data.name} à votre panier. Merci beaucoup !`);
 
             } else {
                 alert("Nos excuses, une erreur est survenue :(");

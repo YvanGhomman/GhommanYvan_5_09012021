@@ -20,8 +20,8 @@ console.log(furnitureStore);
 // si le panier est vide :
 if (furnitureStore.length === 0 || furnitureStore === null /*&& getComputedStyle(validation).display == "block"*/) {
     validation.style.display =" none";
-    let panierVide = `<h1 class="offset-3 col-6 offset-3 text-center" >Votre panier est vide ! :/</h1>
-    <a href="index.html" class="offset-3 col-6 offset-3 center btn btn-primary"><span class="white" >Retour à l'accueil</span></a> `
+    let panierVide = `<h1 class="offset-1 col-10 text-center" >Votre panier est vide ! :/</h1>
+    <a href="index.html" class="offset-3 col-6 center btn btn-primary"><span class="white" >Retour à l'accueil</span></a> `
     displayStore.innerHTML += panierVide;
     
 // s'il y a des produits dans le panier : 
@@ -75,7 +75,11 @@ const createFurnitureElement = (furni , index) =>{
       //console.log(result);
       // si la promesse est resolue, on delete le furni sinon on ne fait rien
       //if (result) {
-        deleteFurni(index);
+        if (window.confirm(`Voulez-vous vraiment supprimer cet article de votre panier ?`)) {
+            deleteFurni(index);
+        } else {
+            window.location.href = "panier.html";
+        };
       //}
     });
     return ul;
