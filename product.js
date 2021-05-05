@@ -77,7 +77,7 @@ fetch(urlApiId)
                 }   
             };
             console.log(furnitureChoice);
-            
+
             // Détection
             if (typeof localStorage != "undefined"){
 
