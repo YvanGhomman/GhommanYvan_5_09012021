@@ -4,9 +4,9 @@ const prixTotalCommande = document.getElementById("totalPriceCart");
 
 
 // récuperation données stockées dans le localStorage 
-function getBackFurnitures() {
+function getBackFurnitures(){
     let furnitureStore = JSON.parse(localStorage.getItem("furnitureInCart"));
-    if (furnitureStore === null || furnitureStore === "undefined") {
+    if (furnitureStore === null || furnitureStore === "undefined"){
         furnitureStore = [];
     }
     return furnitureStore;  
