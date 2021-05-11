@@ -2,38 +2,8 @@ const displayStore = document.getElementById("displayFurnitureStore");
 const validation = document.getElementById("validate");
 const prixTotalCommande = document.getElementById("totalPriceCart");
 const formulaire = document.getElementById("formulaire");
-class Contact {
-    constructor(firstName, lastName, address, city, zip, email){
-        this.firstName = firstName,
-        this.lastName = lastName,
-        this.address = address,
-        this.city = city,
-        this.zip = zip,
-        this.email = email        
-    }
-};
-class EnvoiPanier{
-    async SendProducts(url, contact, products){
-        const options = {
-            method: 'POST',
-            body: JSON.stringify({
-                contact : contact,
-                products: products 
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }
-        try {
-            let response = await fetch(url, options);
-            let result = await response.json();
-            return result
-                     
-        } catch (error) {
-            console.log (error)           
-        }
-    }
-};
+
+
 
 
 
@@ -55,7 +25,7 @@ console.log(furnitureStore);
 if (furnitureStore.length === 0 || furnitureStore === null) {
     validation.style.display =" none";
     let panierVide = `<h1 class="offset-1 col-10 text-center" >Votre panier est vide ! :/</h1>
-    <a href="index.html" class="offset-3 col-6 center btn btn-primary"><span class="white" >Retour à l'accueil</span></a> `
+    <a href="index.html" class="offset-3 col-6 center btn btn-dark"><span class="white" >Retour à l'accueil</span></a> `
     displayStore.innerHTML += panierVide;
     
 // s'il y a des produits dans le panier : 
@@ -67,41 +37,36 @@ const displayFurniture = () => {
     displayStore.innerHTML =" ";
     // j'utilise l'operateur spread pour retourner une liste et pas un tableau
     displayStore.append(...furnitureStoreMap);
-    templateForm();
 };
+
+
 
 //fonction pour créer formulaire
 function templateForm(){
-let templateFormulaire = `<form class="row g-3" id="checked">
-<div class="col-md-6">
-  <label for="inputNom" class="form-label">Nom</label>
-  <input type="text" class="form-control" id="inputNom" placeholder="Torrez" required>
+let templateFormulaire = `<form class="row" id="checked">
+<div class="space-form col-12 col-md-6">
+  <input type="text" class="form-control" id="inputNom" placeholder="Nom" aria-label="Nom" required>
 </div>
-<div class="col-md-6">
-  <label for="inputPrenom" class="form-label">Prénom</label>
-  <input type="text" class="form-control" id="inputPrenom" placeholder="Fabien" required>
+<div class="space-form col-12 col-md-6">
+  <input type="text" class="form-control" id="inputPrenom" placeholder="Prénom" aria-label="Prenom" required>
 </div>
-<div class="col-12">
-  <label for="inputAdresse" class="form-label">Adresse</label>
-  <input type="text" class="form-control" id="inputAdresse" placeholder="12 chemin des Vignes" required>
+<div class="space-form col-12">
+  <input type="text" class="form-control" id="inputAdresse" placeholder="Adresse" aria-label="Adresse" required>
 </div>
-<div class="col-md-6">
-  <label for="inputVille" class="form-label">Ville</label>
-  <input type="text" class="form-control" id="inputVille" placeholder="Avignon" required>
+<div class="space-form col-12 col-md-6">
+  <input type="text" class="form-control" id="inputVille" placeholder="Ville" aria-label="Ville" required>
 </div>
-<div class="col-md-6">
-  <label for="inputPostal" class="form-label">Code Postal</label>
-  <input type="text" class="form-control" id="inputPostal" placeholder="84000" required>
+<div class="space-form col-12 col-md-6">
+  <input type="text" class="form-control" id="inputPostal" placeholder="Code Postal" aria-label="Code postal" required>
 </div>
-<div class="col-12">
-  <label for="inputEmail" class="form-label">Email</label>
-  <input type="email" class="form-control" id="inputEmail" placeholder="appelezmoifab@gmail.com" required>
+<div class="space-form col-12">
+  <input type="email" class="form-control" id="inputEmail" placeholder="E-mail" aria-label="Email" required>
 </div>
-<div class="col-12">
+<div class="space-form col-12">
   <div class="form-check">
     <input class="form-check-input" type="checkbox" id="gridCheck" required>
     <label class="form-check-label" for="gridCheck">
-      J'accepte les conditions légales
+      J'accepte les mentions légales
     </label>
   </div>
 </div>
@@ -109,39 +74,36 @@ let templateFormulaire = `<form class="row g-3" id="checked">
 formulaire.innerHTML += templateFormulaire;
 };
 
+// Appel formulaire
+templateForm();
+
 // fonction pour creer l'element furni 
 const createFurnitureElement = (furni , index) =>{
-    const ul = document.createElement('ul');
-    ul.setAttribute("class","ulDisposition");
-    ul.innerHTML = `
-    <div class="liDisp">Article
-        <ul>
-            <li>${furni.furnitureName} </li>
-            <li><img src="${furni.furnitureImage}" width= 80px height= 80px></li>
-            <li>${furni.furnitureVarnish}</li>
-        </ul>
-    </div>
-    <div class="liDisp">Quantité
-        <ul>
-            <li>${furni.furnitureQuantite}</li>
-        </ul>
-    </div>
-    <div class="liDisp">Prix unitaire
-        <ul>
-            <li>${furni.furniturePrice}</li>
-        </ul>
-    </div>
-    <div class="liDisp">Prix total
-        <ul>
-            <li>${furni.totalPrice}</li>
-        </ul>
-    </div>
-    <div class="liDisp">Supprimer
-        <ul>
-            <li> <button class="deleteBtn"><i class="far fa-trash-alt"></i></button></li>
-        </ul>
+    let prod = document.createElement('div');
+    prod.innerHTML = 
+    `<div class="container-fluid  card-cart ">
+        <div class="col-12">
+            <p class="article-title">${furni.furnitureName} </p>
+            <img class="image-panier" src="${furni.furnitureImage}">
+            <p class="bold">Vernis</p>
+            <p>${furni.furnitureVarnish}</p>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-3 "><span class="bold">Quantité</span>
+                <p class="center">${furni.furnitureQuantite}</p>
+            </div>
+            <div class="col-6 col-md-3 "><span class="bold">Prix unitaire</span>
+                <p>${furni.furniturePrice}€</p>
+            </div>
+            <div class="col-6 col-md-3 "><span class="bold">Prix total</span>
+                <p>${furni.totalPrice}€</p>
+            </div>
+            <div class="col-6 col-md-3 "><span class="bold">Supprimer</span>
+                <p> <button class="deleteBtn"><i class="far fa-trash-alt"></i></button></p>
+            </div>
+        </div>
     </div> `;
-   const btnDelete = ul.querySelector('.deleteBtn');
+   const btnDelete = prod.querySelector('.deleteBtn');
    btnDelete.addEventListener('click', ()=>{
 
       // on delete le furni sinon on recharge la page du panier
@@ -152,7 +114,7 @@ const createFurnitureElement = (furni , index) =>{
         };
       //}
     });
-    return ul;
+    return prod;
 };
 
 // fonction deleteFurni qui sera appelé à l'interieur de l'évenement btnDelete
@@ -184,7 +146,9 @@ const compteurPanierPrixTotal = () =>{
     }else{
 
     let prixTotal = arrayPrixTotal.reduce((accumulator, currentValue)=> accumulator+ currentValue);
-    prixTotalCommande.innerHTML= `PRIX TOTAL: ${prixTotal}€`;
+    prixTotalCommande.innerHTML= `<div class="center">
+        <h2>PRIX TOTAL: ${prixTotal}€</h2>
+    </div>`;
     localStorage.setItem("TotalPrice", prixTotal);
     console.log(localStorage);  
 }};
@@ -195,43 +159,162 @@ displayFurniture();
 
 validation.addEventListener('click', (e)=>{
     e.preventDefault;
-    let Nom = document.getElementById('inputNom').value;
-    let Prenom = document.getElementById('inputPrenom').value;
+    lanceToiBordel();
+});
+
+
+
+function lanceToiBordel(){
+
+    let Checked = document.getElementById('gridCheck').value;
+    let FormValid = document.getElementById('checked').checkValidity();
+   // let Postal = document.getElementById('inputPostal').value,
+
+    /* let firstName = document.getElementById('inputPrenom').value;
+    let lastName = document.getElementById('inputNom').value;
     let Adresse = document.getElementById('inputAdresse').value;
     let Ville = document.getElementById('inputVille').value;
     let Postal = document.getElementById('inputPostal').value;
-    let Email = document.getElementById('inputEmail').value;
-    let Checked = document.getElementById('gridCheck').value;
-    let FormValid = document.getElementById('checked').checkValidity();
+    let Email = document.getElementById('inputEmail').value; */
 
     if (FormValid == false ) {
         alert(`Vous n'avez pas rempli tous les champs requis pour valider votre commande !`);
-        document.location.href='panier.html';
     }else{
-    
-    function SendToServer(){
-        let contact = new Contact(Nom, Prenom, Adresse, Ville, Postal, Email);
-        let produits = [];
-        for (let i=0; i< furnitureStore.length; i++){ //boucle pour recuperer les id 
-            produits.push(furnitureStore[i].id) //envoie des id dans la variable products
-        };
-        
-        let urlOrderApi = "http://localhost:3000/api/furniture/order"
-        let sendCart = new EnvoiPanier // instance de la classe EnvoiPanier      
-        sendCart.SendProducts(urlOrderApi, contact, produits) //appel de la fonction SendProducts avec les arguments
-        .then (result => {
-              //création d'une variable dans le sessionStorage pour y sauvegarder les données au serveur dans le but de les utiliser pour la page confirmation
-              var  order = JSON.parse(sessionStorage.getItem('orderId')); 
-              order = []
-              order.push(result)
-              console.log(order)
-              sessionStorage.setItem('orderConfirm', JSON.stringify(order));
-              // redirection vers la page confirmation
-              document.location.href='confirmation.html';
-          })
-      }
-        
-      SendToServer();
-    }});
+     
+        let contact = {
+            firstName : document.getElementById('inputPrenom').value,
+            lastName : document.getElementById('inputNom').value,
+            address : document.getElementById('inputAdresse').value,
+            city : document.getElementById('inputVille').value,
+            email : document.getElementById('inputEmail').value
+        }; 
+        console.log(contact);
 
+    /* class Contact {
+        constructor(firstName, lastName, address, city, zip, email){
+            this.firstName = firstName,
+            this.lastName = lastName,
+            this.address = address,
+            this.city = city,
+            this.zip = zip,
+            this.email = email        
+        }
+    };   */   
+    
+
+
+        let products = [];
+      //  let furnitureStore = JSON.parse(localStorage.getItem("furnitureInCart"));
+
+        /* for (const furniInStore of furnitureStore) {
+            let productsId = furniInStore.furniId;
+            console.log(productsId);
+            products.push(productsId);
+            console.log(products);
+        }; */
+
+         for (let i=0; i<furnitureStore.length; i++){ //boucle pour recuperer les id 
+            products.push(furnitureStore[i].id);//envoie des id dans la variable produits
+            console.log(products);
+        }; 
+
+        let order = {contact, products};
+        console.log(order);
+
+        /* class EnvoiPanier{
+        async SendProducts(url, contact, products){
+             const options = {
+                method: 'POST',
+                body: JSON.stringify({
+                    contact : contact,
+                    products: products 
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }; 
+            try {
+                let response = await fetch(url, options);
+                let result = await response.json();
+                return result
+                            
+            } catch (error) {
+                console.log (error)           
+            }
+        }
+        }; */
+
+
+       // let urlOrderApi = "http://localhost:3000/api/furniture/order";
+       /*  const options = {
+            method: 'POST',
+            body: JSON.stringify(order),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }; */
+
+        const envoi = fetch("http://localhost:3000/api/furniture/order", {
+            method: 'POST',
+            body: JSON.stringify(order),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        envoi.then(async response =>{
+            try{
+                console.log(response);
+                let confirmation = await response.json();
+                console.log(confirmation);
+                let idConfirmation = confirmation.order_id;
+                console.log(idConfirmation);
+
+                if (typeof localStorage != "undefined") {
+                    localStorage.setItem("confirm", JSON.stringify(idConfirmation));
+                    localStorage.setItem("contact", JSON.stringify(contact));
+                  //  localStorage.removeItem("furnitureInCart");
+                   // localStorage.removeItem("orderConfirm");
+
+                  //  window.location.href ="confirmation.html";
+                   } else {
+                     alert("localStorage n'est pas supporté");
+                }
+
+            } catch (error) {
+                console.log(error);
+                alert("Un problème est survenu, merci de réessayer plus tard");
+            }
+        });
+    };
+}
 };
+
+
+    /*     
+
+        /* let sendCart = new EnvoiPanier // instance de la classe EnvoiPanier      
+        sendCart.SendProducts(urlOrderApi, contact, products) //appel de la fonction SendProducts avec les arguments
+        .then (result => {
+                //création d'une variable dans le sessionStorage pour y sauvegarder les données au serveur dans le but de les utiliser pour la page confirmation
+                let order = JSON.parse(localStorage.getItem('orderId')); 
+                order = [];
+                order.push(result);
+                console.log(order);
+                localStorage.setItem('orderConfirm', JSON.stringify(order));
+                // redirection vers la page confirmation
+                //document.location.href='confirmation.html';
+        }).catch (error => {
+            console.log(error);
+            alert("Un problème est survenu, merci de réessayer plus tard");
+            }) 
+    }
+});
+};
+
+        
+ //SendToServer();
+     };
+});
+
+}; 
+ */

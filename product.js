@@ -39,7 +39,7 @@ function displayFurniture(data){
             <div class="card-body">
                 <h5 class="card-title">${data.name}</h5>
                 <p class="card-text">${data.description}</p>
-                <p class="card-text">${data.price/100} Dogecoins</p>
+                <p class="bold center card-text">${data.price/100}€</p>
             </div>
             <div class="card-footer text-muted">
                 <form class="offset-1 col-10 offset-1 ">

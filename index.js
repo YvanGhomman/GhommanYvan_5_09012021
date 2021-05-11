@@ -11,13 +11,13 @@ fetch(urlFurnitures)
         console.log(data);
         let furnitureElement = '';
         for (let furniture of data){
-            furnitureElement += `<div class="card contrecol col-12 col-sm-5 col-lg-3 space">
+            furnitureElement += `<div class="card contrecol col-12 col-md-5 col-lg-3 space">
                                     <img src="${furniture.imageUrl}" class="card-img-top" alt="${furniture.name}">
                                     <div class="card-body">
                                         <h5 class="card-title">${furniture.name}</h5>
                                         <p class="card-text">${furniture.description}</p>
-                                        <p class="card-text">${furniture.price/100} Dogecoins</p>
-                                        <a href="product.html?id=${furniture._id}" class="btn btn-primary">Kilébo ! Jeleveu ♥</a>
+                                        <p class="bold center card-text">${furniture.price/100}€</p>
+                                        <a href="product.html?id=${furniture._id}" class="col-10 offset-1 btn btn-dark"><span class="gradient">Kilébo ! Jeleveu ♥</span></a>
                                     </div>
                                 </div>`;
         }
