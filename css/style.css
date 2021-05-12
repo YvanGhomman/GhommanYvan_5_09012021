@@ -90,6 +90,15 @@ main {
   object-fit: cover;
 }
 
+.check {
+  background: -webkit-linear-gradient(left, #8F5BFE 45%, #E68A08 55%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 80px;
+  padding: 20px;
+}
+
 /* .ulDisposition{
      display: flex;
 

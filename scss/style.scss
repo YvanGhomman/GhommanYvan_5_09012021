@@ -85,6 +85,14 @@ margin-bottom: 0px;
     border-radius: 10px;
     object-fit: cover;
 }
+.check{
+    background:-webkit-linear-gradient(left, $color-secondary 45%, $color-primary  55%);
+    background-clip:text;
+    -webkit-background-clip:text;
+    color:transparent;
+    font-size: 80px;
+    padding: 20px;
+}
 
 /* .ulDisposition{
      display: flex;

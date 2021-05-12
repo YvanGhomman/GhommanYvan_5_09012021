@@ -159,26 +159,21 @@ displayFurniture();
 
 validation.addEventListener('click', (e)=>{
     e.preventDefault;
-    lanceToiBordel();
+    sendOrderCustomer();
 });
 
 
 
-function lanceToiBordel(){
+function sendOrderCustomer(){
 
     let Checked = document.getElementById('gridCheck').value;
     let FormValid = document.getElementById('checked').checkValidity();
-   // let Postal = document.getElementById('inputPostal').value,
 
-    /* let firstName = document.getElementById('inputPrenom').value;
-    let lastName = document.getElementById('inputNom').value;
-    let Adresse = document.getElementById('inputAdresse').value;
-    let Ville = document.getElementById('inputVille').value;
-    let Postal = document.getElementById('inputPostal').value;
-    let Email = document.getElementById('inputEmail').value; */
 
     if (FormValid == false ) {
+
         alert(`Vous n'avez pas rempli tous les champs requis pour valider votre commande !`);
+
     }else{
      
         let contact = {
@@ -190,69 +185,18 @@ function lanceToiBordel(){
         }; 
         console.log(contact);
 
-    /* class Contact {
-        constructor(firstName, lastName, address, city, zip, email){
-            this.firstName = firstName,
-            this.lastName = lastName,
-            this.address = address,
-            this.city = city,
-            this.zip = zip,
-            this.email = email        
-        }
-    };   */   
-    
-
 
         let products = [];
-      //  let furnitureStore = JSON.parse(localStorage.getItem("furnitureInCart"));
-
-        /* for (const furniInStore of furnitureStore) {
-            let productsId = furniInStore.furniId;
-            console.log(productsId);
-            products.push(productsId);
-            console.log(products);
-        }; */
-
+        console.log(furnitureStore);
          for (let i=0; i<furnitureStore.length; i++){ //boucle pour recuperer les id 
-            products.push(furnitureStore[i].id);//envoie des id dans la variable produits
+            products.push(furnitureStore[i].furnitureId);//envoie des id dans la variable produits
             console.log(products);
         }; 
+
 
         let order = {contact, products};
         console.log(order);
 
-        /* class EnvoiPanier{
-        async SendProducts(url, contact, products){
-             const options = {
-                method: 'POST',
-                body: JSON.stringify({
-                    contact : contact,
-                    products: products 
-                }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }; 
-            try {
-                let response = await fetch(url, options);
-                let result = await response.json();
-                return result
-                            
-            } catch (error) {
-                console.log (error)           
-            }
-        }
-        }; */
-
-
-       // let urlOrderApi = "http://localhost:3000/api/furniture/order";
-       /*  const options = {
-            method: 'POST',
-            body: JSON.stringify(order),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }; */
 
         const envoi = fetch("http://localhost:3000/api/furniture/order", {
             method: 'POST',
@@ -266,17 +210,24 @@ function lanceToiBordel(){
                 console.log(response);
                 let confirmation = await response.json();
                 console.log(confirmation);
-                let idConfirmation = confirmation.order_id;
+                let idConfirmation = confirmation.orderId;
                 console.log(idConfirmation);
 
-                if (typeof localStorage != "undefined") {
-                    localStorage.setItem("confirm", JSON.stringify(idConfirmation));
-                    localStorage.setItem("contact", JSON.stringify(contact));
-                  //  localStorage.removeItem("furnitureInCart");
-                   // localStorage.removeItem("orderConfirm");
+                let result = {
+                    idConfirmation: idConfirmation,
+                    contact: contact
+                }
+                console.log(result);
 
-                  //  window.location.href ="confirmation.html";
-                   } else {
+                if (typeof localStorage != "undefined") {
+                    localStorage.setItem("confirm", JSON.stringify(result));
+                    localStorage.setItem("furnitureInCart",JSON.stringify([]));
+
+                    window.location.href ="confirmation.html";
+                   
+
+                } else {
+                    
                      alert("localStorage n'est pas supporté");
                 }
 
@@ -288,33 +239,3 @@ function lanceToiBordel(){
     };
 }
 };
-
-
-    /*     
-
-        /* let sendCart = new EnvoiPanier // instance de la classe EnvoiPanier      
-        sendCart.SendProducts(urlOrderApi, contact, products) //appel de la fonction SendProducts avec les arguments
-        .then (result => {
-                //création d'une variable dans le sessionStorage pour y sauvegarder les données au serveur dans le but de les utiliser pour la page confirmation
-                let order = JSON.parse(localStorage.getItem('orderId')); 
-                order = [];
-                order.push(result);
-                console.log(order);
-                localStorage.setItem('orderConfirm', JSON.stringify(order));
-                // redirection vers la page confirmation
-                //document.location.href='confirmation.html';
-        }).catch (error => {
-            console.log(error);
-            alert("Un problème est survenu, merci de réessayer plus tard");
-            }) 
-    }
-});
-};
-
-        
- //SendToServer();
-     };
-});
-
-}; 
- */

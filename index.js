@@ -2,6 +2,8 @@
 const urlFurnitures = 'http://localhost:3000/api/furniture';
 const furnituresContainer = document.getElementById("furnitures-container");
 
+const cartFurnitures = document.getElementById("cart_furniture");
+
 
 // Get Function with Fetch
 fetch(urlFurnitures)
