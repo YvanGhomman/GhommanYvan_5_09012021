@@ -2,8 +2,6 @@
 const urlFurnitures = 'http://localhost:3000/api/furniture';
 const furnituresContainer = document.getElementById("furnitures-container");
 
-const cartFurnitures = document.getElementById("cart_furniture");
-
 
 // Get Function with Fetch
 fetch(urlFurnitures)
@@ -14,7 +12,7 @@ fetch(urlFurnitures)
         let furnitureElement = '';
         for (let furniture of data){
             furnitureElement += `<div class="card contrecol col-12 col-md-5 col-lg-3 space">
-                                    <img src="${furniture.imageUrl}" class="card-img-top" alt="${furniture.name}">
+                                    <img src="${furniture.imageUrl}" class="image-accueil card-img-top" alt="${furniture.name}">
                                     <div class="card-body">
                                         <h5 class="card-title">${furniture.name}</h5>
                                         <p class="card-text">${furniture.description}</p>

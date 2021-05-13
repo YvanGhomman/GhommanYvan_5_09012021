@@ -21,7 +21,6 @@ function displayConfirmation(){
         <h1 class="text-center col-10 offset-1">Merci ${customerFirstName} ${customerLastName} pour votre achat !</h1>
         <p class="text-center col-10 offset-1">Votre commande est la n°<span class="bold">${orderNumber}</span> et son montant est de <span class="bold">${totalPrice}€</span></p>
         <p class="text-center col-10 offset-1">Votre colis est en cours de préparation et arrivera à ${customerCity} au plus vite !</p>
-        <h2><i class="text-center col-10 offset-1 far fa-check-circle check "></i></h2>
-    </div>  `
-
+        <h2><i class="text-center col-10 offset-1 far fa-check-circle check"></i></h2>
+    </div> `
 }

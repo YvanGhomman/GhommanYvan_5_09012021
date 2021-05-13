@@ -81,7 +81,7 @@ fetch(urlApiId)
             // Détection
             if (typeof localStorage != "undefined"){
 
-            // on recupère la valeur dans le Web Storage
+            // on recupère la valeur dans le localStorage
                 let furnitureStore = JSON.parse(localStorage.getItem("furnitureInCart"));
                 if (furnitureStore === null || furnitureStore === "undefined"){
                     furnitureStore = []; // on crée le tableau 

@@ -123,39 +123,36 @@ const deleteFurni = (index)=>{
     localStorage.setItem("furnitureInCart", JSON.stringify(furnitureStore)) 
     JSON.parse(localStorage.getItem("furnitureInCart"));
     displayFurniture();
-    compteurPanierPrixTotal();
+    compteurPrixTotal();
 };
 
 
-// incrementation du panier et calcul du prix total de la commande:
-const compteurPanierPrixTotal = () =>{
-    let arrayCompteurPanier =[] ;
+// Calcul du prix total de la commande:
+const compteurPrixTotal = () =>{
+
     let arrayPrixTotal =[];
     for (const furniInStore of furnitureStore) {
-      let itemQte = furniInStore.furnitureQuantite;
-      arrayCompteurPanier.push(itemQte); 
-      console.log(arrayCompteurPanier);
-
       let prix = furniInStore.totalPrice;
       arrayPrixTotal.push(prix);
     }
     console.log(arrayPrixTotal);
 
-    if (arrayCompteurPanier.length === 0 ) {
-        location.assign('panier.html');
-    }else{
 
-    let prixTotal = arrayPrixTotal.reduce((accumulator, currentValue)=> accumulator+ currentValue);
+    let prixTotal = arrayPrixTotal.reduce((accumulator, currentValue) => accumulator + currentValue);
     prixTotalCommande.innerHTML= `<div class="center">
         <h2>PRIX TOTAL: ${prixTotal}€</h2>
     </div>`;
     localStorage.setItem("TotalPrice", prixTotal);
     console.log(localStorage);  
-}};
+    
+};
 
 
-compteurPanierPrixTotal();
+compteurPrixTotal();
 displayFurniture();
+
+
+
 
 validation.addEventListener('click', (e)=>{
     e.preventDefault;
@@ -223,7 +220,7 @@ function sendOrderCustomer(){
                     localStorage.setItem("confirm", JSON.stringify(result));
                     localStorage.setItem("furnitureInCart",JSON.stringify([]));
 
-                    window.location.href ="confirmation.html";
+                   window.location.href ="confirmation.html";
                    
 
                 } else {
