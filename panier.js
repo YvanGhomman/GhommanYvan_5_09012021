@@ -109,6 +109,7 @@ const createFurnitureElement = (furni , index) =>{
       // on delete le furni sinon on recharge la page du panier
         if (window.confirm(`Voulez-vous vraiment supprimer cet article de votre panier ?`)) {
             deleteFurni(index);
+            window.location.href = "panier.html";
         } else {
             window.location.href = "panier.html";
         };
@@ -137,13 +138,16 @@ const compteurPrixTotal = () =>{
     }
     console.log(arrayPrixTotal);
 
-
+    if (arrayPrixTotal.length === 0) {
+        location.assign('panier.html');
+    } else {
     let prixTotal = arrayPrixTotal.reduce((accumulator, currentValue) => accumulator + currentValue);
     prixTotalCommande.innerHTML= `<div class="center">
         <h2>PRIX TOTAL: ${prixTotal}€</h2>
     </div>`;
     localStorage.setItem("TotalPrice", prixTotal);
-    console.log(localStorage);  
+    console.log(localStorage);
+    }  
     
 };
 
