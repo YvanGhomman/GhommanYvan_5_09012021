@@ -1,21 +1,24 @@
 const confirm = document.getElementById("confirmation");
 
-
+//récuperation contact du client et id confirmation du serveur
 let confirmationCommande = JSON.parse(localStorage.getItem("confirm"));
-//let confirmContact = JSON.parse(localStorage.getItem("contact"));
-
 console.log(confirmationCommande);
-//console.log(confirmContact);
 
+//récupération id confirmation du serveur
 let orderNumber = confirmationCommande.idConfirmation;
+
+//récuperation coordonnées client
 let customerFirstName = confirmationCommande.contact.firstName;
 let customerLastName = confirmationCommande.contact.lastName;
 let customerCity = confirmationCommande.contact.city;
+
+//récupération prix total dans localStorage
 let totalPrice = localStorage.getItem("TotalPrice");
 console.log(totalPrice);
 
 displayConfirmation();
 
+//affichage texte
 function displayConfirmation(){
     confirm.innerHTML = `<div>
         <h1 class="text-center col-10 offset-1">Merci ${customerFirstName} ${customerLastName} pour votre achat !</h1>

@@ -64,7 +64,10 @@ fetch(urlApiId)
         console.log(data);
         displayFurniture(data);
         choixVernis(data);
+    //Écoute du bouton ajout au panier
         btn.addEventListener("click",()=>{
+
+    //Création variable avec infos du produit choisi
             let furnitureChoice = {
                 furnitureName : data.name,
                 furnitureId   : data._id,
@@ -78,17 +81,19 @@ fetch(urlApiId)
             };
             console.log(furnitureChoice);
 
-            // Détection
+            // Détection du localStorage
             if (typeof localStorage != "undefined"){
 
-            // on recupère la valeur dans le localStorage
+            // On recupère la valeur dans le localStorage
                 let furnitureStore = JSON.parse(localStorage.getItem("furnitureInCart"));
                 if (furnitureStore === null || furnitureStore === "undefined"){
-                    furnitureStore = []; // on crée le tableau 
+                    furnitureStore = []; // on crée un tableau 
                 }else{
                     furnitureStore.push(furnitureChoice); // si le tableau existe on push le choix du meuble
                 }
+            // On redefini localStorage avec la nouvelle valeur
                 localStorage.setItem("furnitureInCart", JSON.stringify(furnitureStore));
+            // Alert box 
                 if (window.confirm(`Vous avez ajouté ${furnitureChoice.furnitureQuantite} ${data.name} à votre panier ! Souhaitez-vous continuer vos achats ? `)){
                     window.location.href = "index.html";
                 } else {
