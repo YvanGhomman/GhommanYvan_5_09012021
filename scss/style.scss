@@ -38,9 +38,6 @@ main{
 .card{
     margin: 30px 5px;
 }
-.marginfooter{
-margin-bottom: 0px;
-}
 
 .space{
     margin-bottom: 20px ;
@@ -79,7 +76,8 @@ margin-bottom: 0px;
     font-weight: bold;
 }
 .image-panier{
-    width: 250px;
+    width: 100%;
+    max-width: 250px;
     height: 200px;
     object-position: top;
     border-radius: 10px;
@@ -99,6 +97,17 @@ margin-bottom: 0px;
     object-fit: cover;
 }
 
+.main-empty{
+    margin-bottom: 100px;
+    min-height: 100%;
+    margin:0 auto;
+    position: relative;
+}
+.footer-empty{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+} 
 
 
 

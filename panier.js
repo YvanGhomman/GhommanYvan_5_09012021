@@ -30,14 +30,20 @@ if (furnitureStore.length === 0 || furnitureStore === null) {
     
 // s'il y a des produits dans le panier : 
 } else {
-const displayFurniture = () => {
-    const furnitureStoreMap = furnitureStore.map((furni , index) => {
-        return createFurnitureElement(furni, index);
-    });
-    displayStore.innerHTML =" ";
-    // j'utilise l'operateur spread pour retourner une liste et pas un tableau
-    displayStore.append(...furnitureStoreMap);
-};
+
+    let mainEmpty =  document.getElementById('main');
+    mainEmpty.classList.remove('main-empty');
+    let footerEmpty =  document.getElementById('footer');
+    footerEmpty.classList.remove('footer-empty');
+
+    const displayFurniture = () => {
+        const furnitureStoreMap = furnitureStore.map((furni , index) => {
+            return createFurnitureElement(furni, index);
+        });
+        displayStore.innerHTML =" ";
+        // j'utilise l'operateur spread pour retourner une liste et pas un tableau
+        displayStore.append(...furnitureStoreMap);
+    };
 
 
 

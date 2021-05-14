@@ -11,7 +11,7 @@ function furnituresNumber(){
         // fonction qui compte le nombre d'articles du panier
         let count = furnitureStore.reduce((sum, item) => sum += item.furnitureQuantite, 0);
         //texte affiché
-        let counter = `<span class= "d-sm-block bg-dark text-light px-2 rounded-circle">${count}</span>`;
+        let counter = `<span class= "text-light px-2">${count}</span>`;
         //injection du texte dans l'id
         cartFurnitures.innerHTML += counter;
     }
