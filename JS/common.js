@@ -2,6 +2,7 @@
 //Fonction pour compter le nombre d'articles dans le panier
 
 function furnituresNumber(){
+    
     //recuperation article dans localstorage
     const furnitureStore = JSON.parse(localStorage.getItem("furnitureInCart"));
     //récupération de l'id où va être injecté counter

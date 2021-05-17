@@ -11,20 +11,20 @@ let btn = document.querySelector(".cart");
 
 //fonction pour la quantité
 function compteur(){
-    let q = parseInt(document.getElementById("quantite").value);
+    let q = parseInt(document.getElementById("quantite").value); //on récupère la quantité indiquée par le client
     if (q > 0) {
-        return q;
+        return q; //si elle est positive on la retourne (elle est valide)
     }else {
-        q = 1;
-        alert("La donnée indiquée est erronée ! 1 produit a été ajouté à votre panier par défault");
+        q = 1; //sinon on met 1 par défaut
+        alert("La donnée indiquée est erronée ! 1 produit a été ajouté à votre panier par défaut");
     }
-    return q;
+    return q; //on retourne la valeur
 };
 
 // fonction pour afficher les options de vernis
 function choixVernis(data) {
     let choixVernis = document.getElementById("choix-vernis")
-    for (let i = 0; i < data.varnish.length; i++) {
+    for (let i = 0; i < data.varnish.length; i++) { //boucle pour afficher les options de vernis
       let newChoixVernis = document.createElement("option")
       newChoixVernis.innerText = data.varnish[i];
       choixVernis.append(newChoixVernis);
@@ -67,7 +67,7 @@ fetch(urlApiId)
     //Écoute du bouton ajout au panier
         btn.addEventListener("click",()=>{
 
-    //Création variable avec infos du produit choisi
+        //Création variable avec infos du produit choisi
             let furnitureChoice = {
                 furnitureName : data.name,
                 furnitureId   : data._id,
@@ -86,18 +86,20 @@ fetch(urlApiId)
 
             // On recupère la valeur dans le localStorage
                 let furnitureStore = JSON.parse(localStorage.getItem("furnitureInCart"));
-                if (furnitureStore === null || furnitureStore === "undefined"){
-                    furnitureStore = []; // on crée un tableau 
+                if (furnitureStore === null || furnitureStore === "undefined"){ //si le localStorage n'a pas de furnitureStore
+                    furnitureStore = [];// on crée un tableau 
+                    furnitureStore.push(furnitureChoice); //et on met le produit selectionné dedans
                 }else{
-                    furnitureStore.push(furnitureChoice); // si le tableau existe on push le choix du meuble
+                    furnitureStore.push(furnitureChoice); // si le tableau existe on push le choix du meuble dedans
                 }
+                
             // On redefini localStorage avec la nouvelle valeur
                 localStorage.setItem("furnitureInCart", JSON.stringify(furnitureStore));
             // Alert box 
                 if (window.confirm(`Vous avez ajouté ${furnitureChoice.furnitureQuantite} ${data.name} à votre panier ! Souhaitez-vous continuer vos achats ? `)){
-                    window.location.href = "index.html";
+                    window.location.href = "../index.html";
                 } else {
-                    window.location.href = "panier.html";
+                    window.location.href = "../HTML/panier.html";
                 };
 
             } else {
