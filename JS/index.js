@@ -17,7 +17,7 @@ fetch(urlFurnitures)
                                         <h5 class="card-title">${furniture.name}</h5>
                                         <p class="card-text">${furniture.description}</p>
                                         <p class="bold center card-text">${furniture.price/100}€</p>
-                                        <a href="../HTML/product.html?id=${furniture._id}" class="col-10 offset-1 btn btn-dark"><span class="gradient">Voir détails</span></a>
+                                        <a href="./HTML/product.html?id=${furniture._id}" class="col-10 offset-1 btn btn-dark"><span class="gradient">Voir détails</span></a>
                                     </div>
                                 </div>`;
         }

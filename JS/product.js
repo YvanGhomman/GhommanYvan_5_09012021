@@ -97,9 +97,9 @@ fetch(urlApiId)
                 localStorage.setItem("furnitureInCart", JSON.stringify(furnitureStore));
             // Alert box 
                 if (window.confirm(`Vous avez ajouté ${furnitureChoice.furnitureQuantite} ${data.name} à votre panier ! Souhaitez-vous continuer vos achats ? `)){
-                    window.location.href = "../index.html";
+                    window.location.href = "./index.html";
                 } else {
-                    window.location.href = "../HTML/panier.html";
+                    window.location.href = "./HTML/panier.html";
                 };
 
             } else {

@@ -25,7 +25,7 @@ console.log(furnitureStore);
 if (furnitureStore.length === 0 || furnitureStore === null) {
     validation.style.display =" none";
     let panierVide = `<h1 class="offset-1 col-10 text-center" >Votre panier est vide ! :/</h1>
-    <a href="../index.html" class="offset-3 col-6 center btn btn-dark"><span class="white" >Retour à l'accueil</span></a> `
+    <a href="./index.html" class="offset-3 col-6 center btn btn-dark"><span class="white" >Retour à l'accueil</span></a> `
     displayStore.innerHTML += panierVide;
     
 // s'il y a des produits dans le panier : 
@@ -70,9 +70,9 @@ if (furnitureStore.length === 0 || furnitureStore === null) {
         // Alert box (delete furni ET rechargement de la page ou redirection vers le panier)
             if (window.confirm(`Voulez-vous vraiment supprimer cet article de votre panier ?`)) {
                 deleteFurni(index);
-                window.location.href = "../HTML/panier.html";
+                window.location.href = "./HTML/panier.html";
             } else {
-                window.location.href = "../HTML/panier.html";
+                window.location.href = "./HTML/panier.html";
             };
         });
         return prod;
@@ -151,7 +151,7 @@ if (furnitureStore.length === 0 || furnitureStore === null) {
     
     //Si le tableau est vide on renvoit à la page du panier vide
         if (arrayPrixTotal.length === 0) {
-            location.assign('../HTML/panier.html');
+            location.assign('./HTML/panier.html');
         } else {
         //On accumule les valeurs du tableau pour faire la somme
             let prixTotal = arrayPrixTotal.reduce((accumulator, currentValue) => accumulator + currentValue);
@@ -251,7 +251,7 @@ if (furnitureStore.length === 0 || furnitureStore === null) {
                     //on vide la selection de meubles du localStorage
                         localStorage.setItem("furnitureInCart",JSON.stringify([]));
                     //redirection vers la page de confirmation
-                        window.location.href ="../HTML/confirmation.html";
+                        window.location.href ="./HTML/confirmation.html";
                     
                 //sinon alerte le client d'une erreur
                     } else {
