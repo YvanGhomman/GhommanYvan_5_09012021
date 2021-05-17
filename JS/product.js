@@ -99,7 +99,7 @@ fetch(urlApiId)
                 if (window.confirm(`Vous avez ajouté ${furnitureChoice.furnitureQuantite} ${data.name} à votre panier ! Souhaitez-vous continuer vos achats ? `)){
                     window.location.href = "../index.html";
                 } else {
-                    window.location.href = "./panier.html";
+                    window.location.href = "panier.html";
                 };
 
             } else {
