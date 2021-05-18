@@ -2,10 +2,9 @@
 const urlFurnitures = 'http://localhost:3000/api/furniture/';
 const searchParam = new URLSearchParams(window.location.search).get("id");
 const urlApiId = urlFurnitures + searchParam;
-const furnitureContainer = document.getElementById("ProduitFurniture");
 console.log(urlApiId);
-
-let btn = document.querySelector(".cart");
+const furnitureContainer = document.getElementById("ProduitFurniture");
+const btn = document.querySelector(".cart");
 
 
 

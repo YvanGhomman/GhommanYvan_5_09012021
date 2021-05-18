@@ -4,9 +4,6 @@ const prixTotalCommande = document.getElementById("totalPriceCart");
 const formulaire = document.getElementById("formulaire");
 
 
-
-
-
 // récuperation données stockées dans le localStorage 
 function getBackFurnitures(){
     let furnitureStore = JSON.parse(localStorage.getItem("furnitureInCart"));
@@ -37,12 +34,23 @@ if (furnitureStore.length === 0 || furnitureStore === null) {
     let footerEmpty =  document.getElementById('footer');
     footerEmpty.classList.remove('footer-empty');
 
+// fonction deleteFurni qui sera appelé à l'interieur de l'évenement btnDelete
+    const deleteFurni = (index)=>{
+    //Suppression de l'index (tout l'affichage du meuble selectionné)
+        furnitureStore.splice(index,1);
+    //Redefinition du localStorage
+        localStorage.setItem("furnitureInCart", JSON.stringify(furnitureStore));
+    //On récupere les données du localStorage recemment mis à jour et on affiche de nouveau les meubles sélectionnés et le compteur de prix total
+        JSON.parse(localStorage.getItem("furnitureInCart"));
+        displayFurniture();
+        compteurPrixTotal();
+    };  
 
 // fonction pour afficher le meuble selectionné
     const createFurnitureElement = (furni , index) =>{
         let prod = document.createElement('div');
         prod.innerHTML = 
-        `<div class="container-fluid  card-cart ">
+        `<div class="container-fluid card-cart">
             <div class="col-12">
                 <p class="article-title">${furni.furnitureName} </p>
                 <img class="image-panier" src="${furni.furnitureImage}">
@@ -78,19 +86,6 @@ if (furnitureStore.length === 0 || furnitureStore === null) {
         return prod;
     };
    
-// fonction deleteFurni qui sera appelé à l'interieur de l'évenement btnDelete
-    const deleteFurni = (index)=>{
-    //Suppression de l'index (tout l'affichage du meuble selectionné)
-        furnitureStore.splice(index,1);
-    //Redefinition du localStorage
-        localStorage.setItem("furnitureInCart", JSON.stringify(furnitureStore));
-    //On récupere les données du localStorage recemment mis à jour et on affiche de nouveau les meubles sélectionnés et le compteur de prix total
-        JSON.parse(localStorage.getItem("furnitureInCart"));
-        displayFurniture();
-        compteurPrixTotal();
-    };    
-
-
 //Affichage des meubles selectionnés selon les données recueillies
     const displayFurniture = () => {
         const furnitureStoreMap = furnitureStore.map((furni , index) => {
